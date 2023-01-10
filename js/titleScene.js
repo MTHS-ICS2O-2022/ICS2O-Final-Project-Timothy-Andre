@@ -1,22 +1,22 @@
 /* global Phaser*/
 
-// Copyright (c) 2023 TMAD All rights reserved
+// Copyright (c) 2022 TMAD All rights reserved
 //
-//Created by: Timothy Manwell and Andre Deveau
+//Created by: Timothy Manwell
 //Created on: Jan 2023
-//This is the Splash Scene
+//This is the Title Scene
 
 /**
- * This class is the splash scene
+ * This class is the title scene
  */
-class SplashScene extends Phaser.Scene {
+class TitleScene extends Phaser.Scene {
   /**
    * This method is the constructor
    */
   constructor() {
-    super({ key: "titleScene" });
-
+    super({ key: "titleScene" })
     this.titleSceneBackgroundImage = null
+    }
   }
 
   init(data) {
@@ -29,17 +29,14 @@ class SplashScene extends Phaser.Scene {
   }
 
   create(data) {
-    this.titleSceneBackgroundImage = this.add.sprite(
-      0,
-      0,
-      "titleSceneBackground"
-    );
-    this.titleSceneBackground.x = 1920 / 2
-    this.titleSceneBackground.y = 1080 / 2
+    this.titleSceneBackgroundImage = this.add
+      .sprite(0, 0, "titleSceneBackground")
+      .setScale(2.75)
+    this.titleSceneBackgroundImage.x = 1920 / 2
+    this.titleSceneBackgroundImage.y = 1080 / 2
   }
 
   update(time, delta) {
   }
 }
-
 export default TitleScene
