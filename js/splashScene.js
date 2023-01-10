@@ -2,7 +2,7 @@
 
 // Copyright (c) 2023 TMAD All rights reserved
 //
-//Created by: Timothy Manwell
+//Created by: Timothy Manwell and Andre Deveau
 //Created on: Jan 2023
 //This is the Splash Scene
 
