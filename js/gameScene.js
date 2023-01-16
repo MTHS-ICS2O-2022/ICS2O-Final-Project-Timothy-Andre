@@ -37,20 +37,24 @@ class GameScene extends Phaser.Scene {
       console.log("Game Scene")
 
       //images
-      this.load.image("tableCloth", "./assets/earth.jpg")
+      this.load.image("earth", "./assets/earth.jpg")
       this.load.image("darcy", "./assets/darcy.jpg")
       this.load.image("food", "./assets/notSally.png")
+
+      this.load.audio("nom", "./assets/darcynom.mp3")
     }
   
     create(data) {
-      this.background = this.add.image(0, 0, "tableCloth").setScale(3.0)
+      this.background = this.add.image(0, 0, "eath").setScale(5.0)
       this.background.setOrigin(0, 0)
 
       this.darcy = this.physics.add.sprite(1920 / 2, 1080 - 100, "darcy")
       .setScale(0.25)
 
       this.foodGroup = this.add.group()
+      .setScale(0.25)
       this.createFood()
+      
 
       this.scoreText = this.add.text(10, 10, "Score: " + this.score.toString(), this.scoreTextStyle)
 
@@ -59,6 +63,7 @@ class GameScene extends Phaser.Scene {
         this.score = this.score + 1
         this.scoreText.setText("Score: " + this.score.toString())
         this.createFood ()
+        this.sound.play("nom")
       }.bind(this))
     }
   
