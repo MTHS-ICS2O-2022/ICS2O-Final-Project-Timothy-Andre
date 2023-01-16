@@ -29,7 +29,7 @@ class GameScene extends Phaser.Scene {
 
       //images
       this.load.image("tableCloth", "./assets/tableCloth.jpg")
-      this.load.image("darcy", "./assets/spaceShip.png")
+      this.load.image("darcy", "./assets/darcy.jpg")
     }
   
     create(data) {
@@ -37,6 +37,7 @@ class GameScene extends Phaser.Scene {
       this.background.setOrigin(0, 0)
 
       this.darcy = this.physics.add.sprite(1920 / 2, 1080 - 100, "darcy")
+      .setScale(0.09)
     }
   
     update(time, delta) {
