@@ -58,13 +58,13 @@ class GameScene extends Phaser.Scene {
           this.darcy.x = 1920
         }
       }
-      if (keyDownObj.isDown === true) {
+      if (keyUpObj.isDown === true) {
         this.darcy.y -= 15
         if (this.darcy.y < 1080) {
           this.darcy.y = 1080
         }
       }
-      if (keyUpObj.isDown === true) {
+      if (keyDownObj.isDown === true) {
         this.darcy.y += 15
         if (this.darcy.y > 0) {
           this.darcy.y = 0
