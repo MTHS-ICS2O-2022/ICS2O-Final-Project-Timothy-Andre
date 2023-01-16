@@ -13,11 +13,20 @@ class GameScene extends Phaser.Scene {
     /**
      * This method is the constructor
      */
+    createFood () {
+      const foodXLocation = Math.floor(Math.random() * 1920) + 1
+      const foodYLocation = Math.floor(Math.random() * 1080) + 1
+      const food = this.physics.add.sprite(foodXLocation, foodYLocation, 'food')
+      this.foodGroup.add(food)
+    }
     constructor() {
       super({ key: "gameScene" })
 
       this.background = null
       this.darcy = null
+      this.score = 0
+      this.scoreText = null
+      this.scoreTextStyle = { font: "65px Arial", fill: "#ffffff", align: "center" }
       }
   
     init(data) {
@@ -28,8 +37,9 @@ class GameScene extends Phaser.Scene {
       console.log("Game Scene")
 
       //images
-      this.load.image("tableCloth", "./assets/tableCloth.jpg")
+      this.load.image("tableCloth", "./assets/earth.jpg")
       this.load.image("darcy", "./assets/darcy.jpg")
+      this.load.image("food", "./assets/notSally.png")
     }
   
     create(data) {
@@ -38,6 +48,18 @@ class GameScene extends Phaser.Scene {
 
       this.darcy = this.physics.add.sprite(1920 / 2, 1080 - 100, "darcy")
       .setScale(0.25)
+
+      this.foodGroup = this.add.group()
+      this.createFood()
+
+      this.scoreText = this.add.text(10, 10, "Score: " + this.score.toString(), this.scoreTextStyle)
+
+      this.physics.add.collider(this.darcy, this.foodGroup, function (darcyCollide, foodCollide) {
+        foodCollide.destroy()
+        this.score = this.score + 1
+        this.scoreText.setText("Score: " + this.score.toString())
+        this.createFood ()
+      }.bind(this))
     }
   
     update(time, delta) {
