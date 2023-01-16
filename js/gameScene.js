@@ -46,7 +46,7 @@ class GameScene extends Phaser.Scene {
     }
   
     create(data) {
-      this.background = this.add.image(0, 0, "eath").setScale(5.0)
+      this.background = this.add.image(0, 0, "background").setScale(5.00)
       this.background.setOrigin(0, 0)
 
       this.darcy = this.physics.add.sprite(1920 / 2, 1080 - 100, "darcy")
