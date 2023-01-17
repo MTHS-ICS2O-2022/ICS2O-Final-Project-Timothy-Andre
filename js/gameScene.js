@@ -20,33 +20,12 @@ class GameScene extends Phaser.Scene {
       .setScale(0.10)
       this.foodGroup.add(food)
     }
-    
-    createTimer () {
-      var me = this
-      me.startTime = new Date()
-      me.totalTime = 15000
-      me.timeElapsed = 0
-      me.createTimer()
-      me.gameTimer = game.time.events.loop(100, function(){
-        me.updateTimer()
-      })
-        me.timeLabel = me.game.add.text(me.game.world.centerX, 100, "00:00", {font: "65px Arial", fill: "#fff"})
-        me.timeLabel.anchor.setTo(0.5, 0)
-        me.timeLabel.align = 'center'
-        var currentTime = new Date()
-        var timeDifference = me.startTime.getTime() - currentTime.getTime()
-        //Time elapsed in seconds
-        me.timeElapsed = Math.abs(timeDifference / 1000)
-        //Time remaining in seconds
-        var timeRemaining = me.totalTime - me.timeElapsed
-        //Convert seconds into minutes and seconds
-        var minutes = Math.floor(timeRemaining / 60)
-        var seconds = Math.floor(timeRemaining) - (60 * minutes)
-        //Display minutes, add a 0 to the start if less than 10
-        var result = (minutes < 10) ? "0" + minutes : minutes;
-        //Display seconds, add a 0 to the start if less than 10
-        result += (seconds < 10) ? ":0" + seconds : ":" + seconds;
-        me.timeLabel.text = result
+    createHazard () {
+      const hazardXLocation = Math.floor(Math.random() * 1920) + 1
+      const hazardYLocation = Math.floor(Math.random() * 1080) + 1
+      const hazard = this.physics.add.sprite(hazardXLocation, hazardYLocation, 'hazard')
+      .setScale(0.05)
+      this.hazardGroup.add(hazard)
     }
     constructor() {
       super({ key: "gameScene" })
@@ -56,6 +35,7 @@ class GameScene extends Phaser.Scene {
       this.score = 0
       this.scoreText = null
       this.scoreTextStyle = { font: "65px Arial", fill: "#ffffff", align: "center" }
+      this.gameOverTextStyle = { font: "65px Arial", fill: "#ff0000", align: "center" }
       }
   
     init(data) {
@@ -69,7 +49,8 @@ class GameScene extends Phaser.Scene {
       this.load.image("earth", "./assets/earth.jpg")
       this.load.image("darcy", "./assets/darcy.jpg")
       this.load.image("food", "./assets/notSally.png")
-      this.load.image("food", "./assets/notSally.png")
+      this.load.image("hazard", "./assets/hazard.png")
+      this.load.image("end", "./assets/end.jpg")
 
       this.load.audio("nom", "./assets/darcynom.mp3")
     }
@@ -84,6 +65,8 @@ class GameScene extends Phaser.Scene {
       this.foodGroup = this.add.group()
       this.createFood()
       
+      this.hazardGroup = this.add.group()
+      this.createHazard()
 
       this.scoreText = this.add.text(10, 10, "Score: " + this.score.toString(), this.scoreTextStyle)
 
@@ -93,6 +76,16 @@ class GameScene extends Phaser.Scene {
         this.scoreText.setText("Score: " + this.score.toString())
         this.createFood ()
         this.sound.play("nom")
+      }.bind(this))
+
+      this.physics.add.collider(this.darcy, this.hazardGroup, function (darcyCollide, hazardCollide) {
+        this.physics.pause()
+        hazardCollide.destroy()
+        darcyCollide.destroy()
+        this.add.image(0, 0, "end").setScale(1.0)
+        this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
+        this.gameOverText.setInteractive({ useHandCursor: true })
+        this.gameOverText.on("pointerdown", () => this.scene.start("gameScene"))
       }.bind(this))
     }
   
