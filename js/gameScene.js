@@ -24,7 +24,7 @@ class GameScene extends Phaser.Scene {
       const hazardXLocation = Math.floor(Math.random() * 1920) + 1
       const hazardYLocation = Math.floor(Math.random() * 1080) + 1
       const hazard = this.physics.add.sprite(hazardXLocation, hazardYLocation, 'hazard')
-      .setScale(0.05)
+      .setScale(0.01)
       this.hazardGroup.add(hazard)
     }
     constructor() {
@@ -75,6 +75,7 @@ class GameScene extends Phaser.Scene {
         this.score = this.score + 1
         this.scoreText.setText("Score: " + this.score.toString())
         this.createFood ()
+        this.createHazard ()
         this.sound.play("nom")
       }.bind(this))
 
