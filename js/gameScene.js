@@ -20,6 +20,34 @@ class GameScene extends Phaser.Scene {
       .setScale(0.10)
       this.foodGroup.add(food)
     }
+    
+    createTimer () {
+      var me = this
+      me.startTime = new Date()
+      me.totalTime = 15000
+      me.timeElapsed = 0
+      me.createTimer()
+      me.gameTimer = game.time.events.loop(100, function(){
+        me.updateTimer()
+      })
+        me.timeLabel = me.game.add.text(me.game.world.centerX, 100, "00:00", {font: "65px Arial", fill: "#fff"})
+        me.timeLabel.anchor.setTo(0.5, 0)
+        me.timeLabel.align = 'center'
+        var currentTime = new Date()
+        var timeDifference = me.startTime.getTime() - currentTime.getTime()
+        //Time elapsed in seconds
+        me.timeElapsed = Math.abs(timeDifference / 1000)
+        //Time remaining in seconds
+        var timeRemaining = me.totalTime - me.timeElapsed
+        //Convert seconds into minutes and seconds
+        var minutes = Math.floor(timeRemaining / 60)
+        var seconds = Math.floor(timeRemaining) - (60 * minutes)
+        //Display minutes, add a 0 to the start if less than 10
+        var result = (minutes < 10) ? "0" + minutes : minutes;
+        //Display seconds, add a 0 to the start if less than 10
+        result += (seconds < 10) ? ":0" + seconds : ":" + seconds;
+        me.timeLabel.text = result
+    }
     constructor() {
       super({ key: "gameScene" })
 
@@ -40,6 +68,7 @@ class GameScene extends Phaser.Scene {
       //images
       this.load.image("earth", "./assets/earth.jpg")
       this.load.image("darcy", "./assets/darcy.jpg")
+      this.load.image("food", "./assets/notSally.png")
       this.load.image("food", "./assets/notSally.png")
 
       this.load.audio("nom", "./assets/darcynom.mp3")
