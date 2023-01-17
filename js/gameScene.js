@@ -50,7 +50,6 @@ class GameScene extends Phaser.Scene {
       this.load.image("darcy", "./assets/darcy.jpg")
       this.load.image("food", "./assets/notSally.png")
       this.load.image("hazard", "./assets/hazard.png")
-      this.load.image("end", "./assets/end.jpg")
 
       this.load.audio("nom", "./assets/darcynom.mp3")
     }
@@ -62,11 +61,11 @@ class GameScene extends Phaser.Scene {
       this.darcy = this.physics.add.sprite(1920 / 2, 1080 - 100, "darcy")
       .setScale(0.25)
 
-      this.foodGroup = this.add.group1()
+      this.foodGroup = this.add.group()
       this.createFood()
       
       this.hazardGroup = this.add.group()
-      this.createFood ()
+      this.createHazard ()
 
       this.scoreText = this.add.text(10, 10, "Score: " + this.score.toString(), this.scoreTextStyle)
 
@@ -83,7 +82,6 @@ class GameScene extends Phaser.Scene {
         this.physics.pause()
         hazardCollide.destroy()
         darcyCollide.destroy()
-        this.add.image(0, 0, "end").setScale(1.0)
         this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
         this.gameOverText.setInteractive({ useHandCursor: true })
         this.gameOverText.on("pointerdown", () => this.scene.start("gameScene"))
