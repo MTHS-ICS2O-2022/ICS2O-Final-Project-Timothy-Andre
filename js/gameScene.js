@@ -77,6 +77,10 @@ class GameScene extends Phaser.Scene {
         this.sound.play("nom")
       }.bind(this))
 
+      this.physics.add.collider(this.darcy, this.foodGroup, function (darcyCollide, foodCollide) {
+        this.createHazard ()
+      }.bind(this))
+
       this.physics.add.collider(this.darcy, this.hazardGroup, function (darcyCollide, hazardCollide) {
         this.physics.pause()
         hazardCollide.destroy()
