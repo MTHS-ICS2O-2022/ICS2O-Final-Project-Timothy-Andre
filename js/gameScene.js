@@ -24,7 +24,7 @@ class GameScene extends Phaser.Scene {
       const hazardXLocation = Math.floor(Math.random() * 1920) + 1
       const hazardYLocation = Math.floor(Math.random() * 1080) + 1
       const hazard = this.physics.add.sprite(hazardXLocation, hazardYLocation, 'hazard')
-      .setScale(0.01)
+      .setScale(0.03)
       this.hazardGroup.add(hazard)
     }
     constructor() {
@@ -59,7 +59,7 @@ class GameScene extends Phaser.Scene {
       this.background.setOrigin(0, 0)
 
       this.darcy = this.physics.add.sprite(1920 / 2, 1080 - 100, "darcy")
-      .setScale(0.25)
+      .setScale(0.20)
 
       this.foodGroup = this.add.group()
       this.createFood()
