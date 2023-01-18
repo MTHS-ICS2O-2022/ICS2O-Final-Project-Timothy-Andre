@@ -82,7 +82,7 @@ class GameScene extends Phaser.Scene {
         this.physics.pause()
         hazardCollide.destroy()
         darcyCollide.destroy ()
-        this.score = this.score - score
+        this.score = this.score - this.score
         this.scoreText.setText("Score: " + this.score.toString())
         this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
         this.gameOverText.setInteractive({ useHandCursor: true })
