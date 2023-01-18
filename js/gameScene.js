@@ -50,7 +50,7 @@ class GameScene extends Phaser.Scene {
       this.load.image("darcy", "./assets/darcy.jpg")
       this.load.image("food", "./assets/notSally.png")
       this.load.image("hazard", "./assets/hazard.png")
-      this.load.image("eng", "./assets/end.jpg")
+      this.load.image("end", "./assets/end.jpg")
 
       this.load.audio("nom", "./assets/darcynom.mp3")
       this.load.audio("death", "./assets/AAAA.mp3")
@@ -85,7 +85,7 @@ class GameScene extends Phaser.Scene {
         hazardCollide.destroy()
         darcyCollide.destroy ()
         this.sound.play("death")
-        this.add.image(540, 0, "end").setScale(5.0)
+        this.add.image(540, 0, "end").setScale(5.0).setOrigin(0, 0)
         this.score = this.score - this.score
         this.scoreText.setText("Score: " + this.score.toString())
         this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
