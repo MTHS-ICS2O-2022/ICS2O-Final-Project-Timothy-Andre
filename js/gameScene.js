@@ -85,7 +85,7 @@ class GameScene extends Phaser.Scene {
         hazardCollide.destroy()
         darcyCollide.destroy ()
         this.sound.play("death")
-        this.add.image(540, 0, "end").setScale(5.0).setOrigin(0, 0)
+        this.add.image(0, 0, "end").setScale(1.0).setOrigin(0, 0)
         this.score = this.score - this.score
         this.scoreText.setText("Score: " + this.score.toString())
         this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
