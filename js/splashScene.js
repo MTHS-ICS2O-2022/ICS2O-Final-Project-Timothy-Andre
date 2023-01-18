@@ -26,6 +26,7 @@ class SplashScene extends Phaser.Scene {
     preload() {
       console.log("Splash Scene")
       this.load.image("splashSceneBackground", "./assets/splashSceneImage.png")
+      this.load.audio("song", "./assets/badpiggiesphonk.mp3")
     }
   
     create(data) {
@@ -36,6 +37,7 @@ class SplashScene extends Phaser.Scene {
       );
       this.splashSceneBackgroundImage.x = 1920 / 2
       this.splashSceneBackgroundImage.y = 1080 / 2
+      this.sound.play("song")
     }
   
     update(time, delta) {
