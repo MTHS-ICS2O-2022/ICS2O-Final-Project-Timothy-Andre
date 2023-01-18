@@ -77,7 +77,8 @@ class GameScene extends Phaser.Scene {
         this.scoreText.setText("Score: " + this.score.toString())
         this.createFood()
         this.createHazard ()
-        this.sound.play("nom")
+        
+        
       }.bind(this))
 
       this.physics.add.collider(this.darcy, this.hazardGroup, function (darcyCollide, hazardCollide) {
@@ -85,10 +86,10 @@ class GameScene extends Phaser.Scene {
         hazardCollide.destroy()
         darcyCollide.destroy ()
         this.sound.play("death")
-        this.add.image(0, 0, "end").setScale(0.5).setOrigin(0, 0)
+        this.add.image(0, 0, "end").setScale(0.9).setOrigin(0, 0)
+        this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Score " + this.score + "\nGame Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
         this.score = this.score - this.score
         this.scoreText.setText("Score: " + this.score.toString())
-        this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
         this.gameOverText.setInteractive({ useHandCursor: true })
         this.gameOverText.on("pointerdown", () => this.scene.start("gameScene"))
       }.bind(this))
