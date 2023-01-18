@@ -24,7 +24,7 @@ class GameScene extends Phaser.Scene {
       const hazardXLocation = Math.floor(Math.random() * 1920) + 1
       const hazardYLocation = Math.floor(Math.random() * 1080) + 1
       const hazard = this.physics.add.sprite(hazardXLocation, hazardYLocation, 'hazard')
-      .setScale(0.03)
+      .setScale(0.02)
       this.hazardGroup.add(hazard)
     }
     constructor() {
@@ -50,8 +50,10 @@ class GameScene extends Phaser.Scene {
       this.load.image("darcy", "./assets/darcy.jpg")
       this.load.image("food", "./assets/notSally.png")
       this.load.image("hazard", "./assets/hazard.png")
+      this.load.image("eng", "./assets/end.jpg")
 
       this.load.audio("nom", "./assets/darcynom.mp3")
+      this.load.audio("death", "./assets/AAAA.mp3")
     }
   
     create(data) {
@@ -82,6 +84,8 @@ class GameScene extends Phaser.Scene {
         this.physics.pause()
         hazardCollide.destroy()
         darcyCollide.destroy ()
+        this.sound.play("death")
+        this.add.image(540, 0, "end").setScale(5.0)
         this.score = this.score - this.score
         this.scoreText.setText("Score: " + this.score.toString())
         this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again.", this.gameOverTextStyle).setOrigin(0.5)
