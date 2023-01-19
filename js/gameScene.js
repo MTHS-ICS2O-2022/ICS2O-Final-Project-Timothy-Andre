@@ -72,6 +72,7 @@ class GameScene extends Phaser.Scene {
 
       this.physics.add.collider(this.darcy, this.foodGroup, function (darcyCollide, foodCollide) {
         foodCollide.destroy()
+        this.sound.play("nom")
         this.score = this.score + 1
         this.scoreText.setText("Score: " + this.score.toString())
         this.createFood()
