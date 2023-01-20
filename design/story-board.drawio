@@ -1,0 +1,25 @@
+<mxfile host="65bd71144e">
+    <diagram id="7yz7GEEtm6BQyHgpbc-E" name="Page-1">
+        <mxGraphModel dx="945" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" value="" style="swimlane;startSize=0;fontSize=36;fontColor=#CC0000;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="80" width="480" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font color=&quot;#000099&quot;&gt;D&lt;/font&gt;&lt;font color=&quot;#ffff66&quot;&gt;A&lt;/font&gt;&lt;font color=&quot;#00ff00&quot;&gt;R&lt;/font&gt;&lt;font color=&quot;#ff0000&quot;&gt;C&lt;/font&gt;&lt;font color=&quot;#0000cc&quot;&gt;Y&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;fontColor=#CC0000;" vertex="1" parent="5">
+                    <mxGeometry x="145" y="40" width="190" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=36;fontColor=#0000CC;" vertex="1" parent="5">
+                    <mxGeometry x="204" y="110" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;font color=&quot;#ff0000&quot;&gt;E&lt;/font&gt;A&lt;font color=&quot;#ffff00&quot;&gt;T&lt;/font&gt;&lt;font color=&quot;#66cc00&quot;&gt;S&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;fontColor=#0000CC;" vertex="1" parent="5">
+                    <mxGeometry x="214" y="210" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;font color=&quot;#0066cc&quot;&gt;T&lt;/font&gt;&lt;font color=&quot;#ffff33&quot;&gt;H&lt;/font&gt;&lt;font color=&quot;#80ff00&quot;&gt;E W&lt;/font&gt;O&lt;font color=&quot;#cc0000&quot;&gt;R&lt;/font&gt;&lt;font color=&quot;#ffff00&quot;&gt;L&lt;/font&gt;D" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;fontColor=#0000CC;" vertex="1" parent="5">
+                    <mxGeometry x="60" y="270" width="370" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
